@@ -1,0 +1,17 @@
+請寫一支python 或 c# 程式, 將以下所有資料夾中的CSV 檔都匯入db
+db 為 microsoft sql express ,127.0.0.1 採用sa 帳號(microsys)密碼(Ye25680117)登入
+每個資料夾內的檔案結構說明, 可以參考每個資料夾中的 manifest.csv
+針對中古屋,租屋,預售屋都用不同的DB
+
+
+之後都用 import_new_folders.py 改資料夾名稱來作資料匯入即可, 目前還沒有檢查匯入資料重覆問題 
+
+最後將3個資料庫備份出來並且寫一個還原功能的
+
+
+這個目錄那支程式是作資料更新, 目前多了幾個目錄它要如何更新, 會自動更新嗎? 
+> 自動掃描當前目錄下的新資料夾（排除 config.py 中已定義的）
+python import_new_folders.py  
+若完成了更新 config.py 應該也要更新己被更新的資料夾, 以免一直更新
+
+修改 python import_new_folders.py 帶參數 1 會直接執行 1. 自動設定執行緒數 (建議)
