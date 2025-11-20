@@ -68,17 +68,19 @@ pip install -r requirements.txt
 ```
 
 2. **設定資料庫連線**
-編輯 `config.py` 檔案，設定資料庫連線參數：
+複製 `config.py.example` 為 `config.py`，並編輯 `config.py` 檔案，設定資料庫連線參數：
 ```python
 DB_CONFIG = {
-    'server': 'localhost\\SQLEXPRESS',
+    'server': 'localhost\\SQLEXPRESS',  # 請填入您的 SQL Server 位址
     'driver': 'ODBC Driver 17 for SQL Server',
-    'username': 'microsys',
-    'password': 'Ye25680117',
+    'username': 'your_username',  # 請填入您的使用者名稱
+    'password': 'your_password',  # 請填入您的密碼
     'trusted_connection': 'no',
     'encrypt': 'no'
 }
 ```
+
+> **注意**：`config.py` 檔案包含敏感資訊，已被 `.gitignore` 排除，不會上傳到版本控制系統。
 
 3. **測試資料庫連線**
 ```bash
@@ -125,9 +127,11 @@ python mock_database_test.py
 
 ```
 LVR250901/
-├── config.py                    # 設定檔
+├── config.py.example           # 設定檔範例（請複製為 config.py 並填入實際資訊）
+├── config.py                   # 設定檔（本地檔案，不會上傳到 Git）
 ├── database_manager.py          # 資料庫管理
 ├── data_importer.py            # 資料匯入器
+├── import_new_folders.py       # 自動掃描並匯入新資料夾
 ├── test_connection.py          # 連線測試
 ├── check_database_structure.py # 資料庫結構檢查
 ├── test_single_folder_import.py # 單一資料夾測試
@@ -136,7 +140,7 @@ LVR250901/
 ├── mock_database_test.py       # 模擬測試
 ├── requirements.txt            # Python 套件需求
 ├── README.md                   # 專案說明文件
-└── lvr_import.log             # 匯入日誌
+└── .gitignore                  # Git 忽略檔案設定
 ```
 
 ## 開發進度
@@ -195,9 +199,9 @@ LVR250901/
 ## 技術規格
 
 ### 資料庫連線
-- **伺服器**: localhost\SQLEXPRESS
+- **伺服器**: 請在 `config.py` 中設定（預設為 `localhost\SQLEXPRESS`）
 - **驅動程式**: ODBC Driver 17 for SQL Server
-- **認證**: SQL Server 認證
+- **認證**: SQL Server 認證（請在 `config.py` 中設定使用者名稱和密碼）
 - **編碼**: UTF-8
 
 ### 批次處理設定
